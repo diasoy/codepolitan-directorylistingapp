@@ -20,17 +20,22 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-app.get("/seed/place", async (req, res) => {
-  const place = new Place({
-    title: "Empire State Building",
-    price: "$99999",
-    description: "This is the best place in the world",
-    location: "New York, NY",
-  });
-
-  await place.save();
-  res.send(place);
+app.get("/places", async (req, res) => {
+  const places = await Place.find({});
+  res.render("places/index", { places });
 });
+
+// app.get("/seed/place", async (req, res) => {
+//   const place = new Place({
+//     title: "Empire State Building",
+//     price: "$99999",
+//     description: "This is the best place in the world",
+//     location: "New York, NY",
+//   });
+
+//   await place.save();
+//   res.send(place);
+// });
 
 app.listen(3000, () => {
   console.log("Server is running on http://localhost:3000");
