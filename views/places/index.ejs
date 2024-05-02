@@ -12,7 +12,10 @@
     <ul>
         <% for(const place of places) { %>
             <li>
-                <%= place.title %>
+                <a href="/places/<%= place._id %>">
+                    <%= place.title %>
+                </a>
+
             </li>
             <% } %>
     </ul>
