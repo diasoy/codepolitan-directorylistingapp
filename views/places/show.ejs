@@ -9,8 +9,9 @@
     <p>
         <%= place.location %>
     </p>
+    <img src="<%= place.image %>" alt="" style="width: 500px;">
     <p>
-        <%= place.rating %>
+        <%= place.description %>
     </p>
 
     <form action="/places/<%= place._id %>?_method=DELETE" method="POST" style="display: inline!important;">
