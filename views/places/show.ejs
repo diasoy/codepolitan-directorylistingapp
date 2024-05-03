@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bestpoiints <%= place.title %>
+    <title>Bestpoints <%= place.title %>
     </title>
 </head>
 
@@ -23,7 +23,8 @@
         <%= place.rating %>
     </p>
 
-    <a href="/places">Back</a>
+    <a href="/places/<%= place._id %>/edit">Edit Places</a>
+    <a href="/places">All Places</a>
 </body>
 
 </html>

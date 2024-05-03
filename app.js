@@ -1,4 +1,5 @@
 const express = require("express");
+const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const path = require("path");
 const app = express();
@@ -16,6 +17,7 @@ const Place = require("./models/place");
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 
 app.get("/", (req, res) => {
   res.render("home");
@@ -42,17 +44,17 @@ app.get("/places/:id", async (req, res) => {
   res.render("places/show", { place });
 });
 
-// app.get("/seed/place", async (req, res) => {
-//   const place = new Place({
-//     title: "Empire State Building",
-//     price: "$99999",
-//     description: "This is the best place in the world",
-//     location: "New York, NY",
-//   });
+app.get("/places/:id/edit", async (req, res) => {
+  const { id } = req.params;
+  const place = await Place.findById(id);
+  res.render("places/edit", { place });
+});
 
-//   await place.save();
-//   res.send(place);
-// });
+app.put("/places/:id", async (req, res) => {
+  await Place.findByIdAndUpdate(req.params.id, { ...req.body.place });
+  res.redirect("/places");
+});
+
 
 app.listen(3000, () => {
   console.log("Server is running on http://localhost:3000");
