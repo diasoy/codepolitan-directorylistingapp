@@ -23,6 +23,10 @@
         <%= place.rating %>
     </p>
 
+    <form action="/places/<%= place._id %>?_method=DELETE" method="POST" style="display: inline!important;">
+        <button type="submit">Delete</button>
+    </form>
+
     <a href="/places/<%= place._id %>/edit">Edit Places</a>
     <a href="/places">All Places</a>
 </body>
