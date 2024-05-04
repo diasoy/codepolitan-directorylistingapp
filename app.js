@@ -20,7 +20,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
-
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   res.render("home");
@@ -58,11 +58,10 @@ app.put("/places/:id", async (req, res) => {
   res.redirect("/places");
 });
 
-app.delete('/places/:id', async (req, res) => {
+app.delete("/places/:id", async (req, res) => {
   await Place.findByIdAndDelete(req.params.id);
-  res.redirect('/places');
+  res.redirect("/places");
 });
-
 
 app.listen(3000, () => {
   console.log("Server is running on http://localhost:3000");

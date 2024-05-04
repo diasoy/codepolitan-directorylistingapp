@@ -1,18 +1,22 @@
 <% layout('layouts/app') %>
 
-    <h1>Add Place</h1>
-    <form action="/places" method="POST">
-        <div>
-            <label for="title">Title</label>
-            <input type="text" id="title" name="place[title]" required>
-        </div>
-        <div>
-            <label for="location">Location</label>
-            <input type="text" id="location" name="place[location]" required>
-        </div>
-        <div>
-            <label for="price">Price</label>
-            <input type="text" id="price" name="place[price]" required>
-        </div>
-        <button type="submit">Save</button>
-    </form>
+    <div class="create-container">
+        <h1 class="title-add-place">Add Place</h1>
+        <form action="/places" method="POST" class="form-create-container">
+            <div class="form-create-place">
+                <div>
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="place[title]" required>
+                </div>
+                <div>
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="place[location]" required>
+                </div>
+                <div>
+                    <label for="price">Price</label>
+                    <input type="text" id="price" name="place[price]" required>
+                </div>
+            </div>
+            <button type="submit" class="button-save">Save</button>
+        </form>
+    </div>
