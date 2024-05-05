@@ -10,6 +10,9 @@
         <p>
             <%= place.location %>
         </p>
+        <p>
+            $ <%= place.price %>
+        </p>
         <form action="/places/<%= place._id %>?_method=DELETE" method="POST" style="display: inline!important;">
             <button class="button-delete" type="submit">Delete</button>
         </form>
